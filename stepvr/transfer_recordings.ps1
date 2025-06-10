@@ -41,7 +41,7 @@ function Transfer-Recordings {
 }
 
 # Call the function for Raum01 to Raum12
-for ($i = 1; $i -le 3; $i++) {
+for ($i = 1; $i -le 12; $i++) {
     $roomNumber = "{0:D2}" -f $i
     $sourcePath = "\\ifasdata.wwu.de\vrvideo\StepVR\Raum$roomNumber"
     $destinationPath = "V:\3_StepVR_Data\Videos"
