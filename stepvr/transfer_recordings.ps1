@@ -6,7 +6,7 @@ function Transfer-Recordings {
     )
 
     # Get all files from the source path
-    Get-ChildItem -Path $sourcePath -File | ForEach-Object {
+    Get-ChildItem -Path $sourcePath -File -Recurse | ForEach-Object {
         $file = $_
         
         # Extract the date in "YYYY.MM.DD" format from the file name
@@ -31,6 +31,7 @@ function Transfer-Recordings {
             $targetFilePath = Join-Path -Path $targetFolder -ChildPath $newFileName
 
             # Move the file to the destination folder
+            Write-Host "Moving file: $($file.Name) to $targetFilePath"
             Move-Item -Path $file.FullName -Destination $targetFilePath
         } else {
             Write-Host "File name does not match expectation: $($file.Name)"
